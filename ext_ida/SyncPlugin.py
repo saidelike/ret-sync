@@ -329,7 +329,7 @@ class RequestHandler(object):
     # return current cursor in IDA Pro
     def req_cursor(self, hash):
         print("[*] request IDA Pro cursor position")
-        addr = idc.ScreenEA()
+        addr = self.rebase_remote(idc.ScreenEA())
         self.notice_broker("cmd", "\"cmd\":\"%s\"" % addr)
         return
 
